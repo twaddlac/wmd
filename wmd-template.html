@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>{{ title }}</title>
+	</head>
+
+	<body>
+
+		<p>{{ statsTitle }}</p>
+		<table border="1" style="width:300px">
+			<!--
+			<th>Mapper</th>
+			<th>Pw</th>
+			<th>w</th>
+			-->
+			<th></th>
+			{% for name in sampleNames %}
+
+				<th>{{name}}</th>
+
+			{% endfor %}
+
+			{% for stat,values in readStatsTable.iteritems() %}
+				<tr>
+					<td>{{stat}}</td>
+					{% for item in values %}
+						<td>{{item}}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</table>
+
+		<p>{{ filteredTitle }}</p>
+		<table border="1" style="width:300px">
+
+			<th></th>
+                        {% for name in sampleNames %}
+
+                                <th>{{name}}</th>
+
+                        {% endfor %}
+
+			{% for stat,values in filteredStatsTable.iteritems() %}
+                                <tr>
+                                        <td>{{stat}}</td>
+                                        {% for item in values %}
+                                                <td>{{item}}</td>
+                                        {% endfor %}
+                                </tr>
+                        {% endfor %}
+
+		</table>
+
+		<p>{{ mappingStatsTitle }}</p>
+                <table border="1" style="width:300px">
+
+                        {% for head in mappingStatsHeaders %}
+
+                                <th>{{head}}</th>
+
+                        {% endfor %}
+
+                        {% for mapper,values in mappingStatsTable.iteritems() %}
+                                <tr>
+                                        {% for item in values %}
+                                                <td>{{item}}</td>
+                                        {% endfor %}
+                                </tr>
+                        {% endfor %}
+
+                </table>
+
+	</body>
+</html>
